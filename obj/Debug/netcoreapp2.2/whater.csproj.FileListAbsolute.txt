@@ -1,0 +1,11 @@
+/home/joe/whater/bin/Debug/netcoreapp2.2/whater.deps.json
+/home/joe/whater/bin/Debug/netcoreapp2.2/whater.runtimeconfig.json
+/home/joe/whater/bin/Debug/netcoreapp2.2/whater.runtimeconfig.dev.json
+/home/joe/whater/bin/Debug/netcoreapp2.2/whater.dll
+/home/joe/whater/bin/Debug/netcoreapp2.2/whater.pdb
+/home/joe/whater/obj/Debug/netcoreapp2.2/whater.csprojAssemblyReference.cache
+/home/joe/whater/obj/Debug/netcoreapp2.2/whater.csproj.CoreCompileInputs.cache
+/home/joe/whater/obj/Debug/netcoreapp2.2/whater.AssemblyInfoInputs.cache
+/home/joe/whater/obj/Debug/netcoreapp2.2/whater.AssemblyInfo.cs
+/home/joe/whater/obj/Debug/netcoreapp2.2/whater.dll
+/home/joe/whater/obj/Debug/netcoreapp2.2/whater.pdb
