@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+
 namespace whater
 {
     public class ConfiguratorExample : IConfigurator
@@ -6,8 +8,12 @@ namespace whater
         {
             if(key == "example")
             {
+                var config = new Dictionary<string, string>();
+                config.Add("api-key", "myKwyy");
+
                 return new HostConfig() {
-                    Host = "https://example.com/"
+                    Host = "https://httpbin.org",
+                    ConfigData = config
                 };
             }
 
@@ -16,9 +22,9 @@ namespace whater
 
         public string GetUri(string key)
         {
-            if(key == "test")
+            if(key == "testget")
             {
-                return "/test/";
+                return "/get";
             }
 
             throw new System.NotImplementedException();

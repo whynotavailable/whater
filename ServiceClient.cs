@@ -5,8 +5,8 @@ namespace whater
 {
     public class ServiceClient : IServiceClient
     {
+        protected readonly HttpClient client;
         private readonly IConfigurator configurator;
-        private readonly HttpClient client;
         private HostConfig hostConfig = null;
         private IClientAuthentication authorizer = null;
 
@@ -30,7 +30,7 @@ namespace whater
             {
                 ApplyAuth(request);
 
-                using (var response = await client.SendAsync(request))
+                using (var response = await Send(request))
                 {
                     response.EnsureSuccessStatusCode();
 
@@ -47,7 +47,7 @@ namespace whater
             {
                 ApplyAuth(request);
 
-                using (var response = await client.SendAsync(request))
+                using (var response = await Send(request))
                 {
                     response.EnsureSuccessStatusCode();
 
@@ -56,7 +56,7 @@ namespace whater
             }
         }
 
-        public async Task<byte[]> GetBinaryAsync(string uriKey)
+        public async Task<HttpResponseMessage> GetRawAsync(string uriKey)
         {
             var uri = configurator.GetUri(uriKey);
 
@@ -64,13 +64,13 @@ namespace whater
             {
                 ApplyAuth(request);
 
-                using (var response = await client.SendAsync(request))
-                {
-                    response.EnsureSuccessStatusCode();
-
-                    return await response.Content.ReadAsByteArrayAsync();
-                }
+                return await Send(request);
             }
+        }
+
+        protected virtual async Task<HttpResponseMessage> Send(HttpRequestMessage request) 
+        {
+            return await this.client.SendAsync(request);
         }
 
         protected void ApplyAuth(HttpRequestMessage request)

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace whater
 {
@@ -6,7 +8,18 @@ namespace whater
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            DoTest().Wait();
+        }
+
+        public static async Task DoTest() 
+        {
+            IServiceClient s = new ServiceClient(new ConfiguratorExample(), new HttpClient());
+            ApiKeyAuthentication keyAuth = new ApiKeyAuthentication();
+
+            s.Configure("example", keyAuth);
+
+            var result = await s.GetAsync("testget");
+            Console.WriteLine(result);
         }
     }
 }
